@@ -1,5 +1,18 @@
-target
+# Operating System Files
+*.DS_Store
+Thumbs.db
+*.sw?
+.#*
+*#
+*~
+*.sublime-*
+
+# Build Artifacts
+.gradle/
+build/
 target/*
+bin/
+dependency-reduced-pom.xml
 
 # Eclipse
 .settings
@@ -8,4 +21,6 @@ target/*
 
 # Idea
 *.iml
-.idea
+*.ipr
+*.iws
+*.idea

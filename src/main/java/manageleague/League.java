@@ -6,7 +6,9 @@ import java.util.Date;
 import java.util.List;
 
 import java.io.Serializable;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.ObjectOutputStream;
 
 public class League implements Serializable {
@@ -61,7 +63,29 @@ public class League implements Serializable {
     }
     
     public void UpdateDB() {
-    	FileOutputStream fout = new FileOutputStream("C:\\")
+    	FileOutputStream fout = null;
+    	ObjectOutputStream oos = null;
+    	
+		try {
+			fout = new FileOutputStream("C:\\");
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		try {
+			oos = new ObjectOutputStream(fout);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+    	try {
+			oos.writeObject(this);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     	
     }
 }

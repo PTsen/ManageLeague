@@ -1,9 +1,10 @@
 package manageleague;
 
-public class Team {
+import java.io.Serializable;
+
+public class Team implements Serializable {
 
     //Private fields
-    private String name;
     public String getName() {
 		return name;
 	}
@@ -68,6 +69,7 @@ public class Team {
 		this.points = points;
 	}
 
+	private String name;
 	private int position;
     private int drawn;
     private int lost;
@@ -76,7 +78,9 @@ public class Team {
     private int goal_diff;
     private int points;
 
-    public Team() {
+    public Team(String name) {
+    	this.name = name;
+    	
     }
 
 

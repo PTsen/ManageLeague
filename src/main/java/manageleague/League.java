@@ -54,15 +54,16 @@ public class League implements Serializable {
     }
 
     //Methods
-    public void AddTeams(Team team){
+    public void addTeams(String name){
+    	Team team = new Team(name);
         list_of_teams.add(team);
     }
 
-    public void AddMatch(Match match){
+    public void addMatch(Match match){
         list_of_matches.add(match);
     }
     
-    public void UpdateDB() {
+    public void updateDB() {
     	FileOutputStream fout = null;
     	ObjectOutputStream oos = null;
     	

@@ -25,3 +25,5 @@ dependency-reduced-pom.xml
 *.iws
 *.idea
 /target/
+/Test Results - testLeague.xml
+Test Results - testLeague.xml

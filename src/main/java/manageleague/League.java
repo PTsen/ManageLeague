@@ -5,13 +5,17 @@ import sun.util.calendar.BaseCalendar;
 import java.util.Date;
 import java.util.List;
 
-public class League {
+import java.io.Serializable;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
+
+public class League implements Serializable {
 
     //Private fields
     private String name;
     private int nbr_teams;
     private Date start_date;   //League season
-    private Date end_date;
+    private Date end_date; 
     private List<Team> list_of_teams;
     private List<Match> list_of_matches;
 
@@ -54,5 +58,10 @@ public class League {
 
     public void AddMatch(Match match){
         list_of_matches.add(match);
+    }
+    
+    public void UpdateDB() {
+    	FileOutputStream fout = new FileOutputStream("C:\\")
+    	
     }
 }

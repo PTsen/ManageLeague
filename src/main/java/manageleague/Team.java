@@ -11,6 +11,9 @@ public class Team {
     private int played;
     private int goal_diff;
     private int points;
+	
+	
+	
 
     public Team() {
     }

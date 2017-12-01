@@ -13,11 +13,12 @@ public class Team implements Serializable {
     private int played;
     private int goal_diff;
     private int points;
-    
+
     //Contsructor
     public Team(String name) {
     	this.name = name;
     	
+
     }
     
     //Private fields

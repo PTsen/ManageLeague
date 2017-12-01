@@ -1,8 +1,9 @@
 package manageleague;
 
 import java.util.Date;
+import java.io.Serializable;
 
-public class Match {
+public class Match implements Serializable{
 
     //private fields
     private int score_t1;
@@ -41,12 +42,27 @@ public class Match {
 
     //Methods
     public void DeterminePoints(){
-
+    	if (this.score_t1 > this.score_t2) {
+    		this.home_team.addWin();
+    		this.away_team.addLoss();
+    		
+    	} else {
+    		if (this.score_t1 == this.score_t2) {
+    			this.home_team.addDraw();
+    			this.away_team.addDraw();
+    			
+    		} else {
+    			this.home_team.addLoss();
+    			this.away_team.addWin();
+    			
+    		}
+    		
+    	}
     }
 
     public void SetScores(int score_t1, int score_t2) {
         this.score_t1 = score_t1;
         this.score_t2 = score_t2;
-        DeterminePoints();
+        DeterminePoints(); //Might be better to leave this out of the function
     }
 }

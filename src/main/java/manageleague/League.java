@@ -46,6 +46,7 @@ public class League implements Serializable {
     }
 
     public List<Team> getList_of_teams() {
+
         return list_of_teams;
     }
 
@@ -55,10 +56,12 @@ public class League implements Serializable {
 
     //Methods
     public void AddTeams(Team team){
+
         list_of_teams.add(team);
     }
 
     public void AddMatch(Match match){
+
         list_of_matches.add(match);
     }
     

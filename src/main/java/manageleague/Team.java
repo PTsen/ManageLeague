@@ -12,7 +12,8 @@ public class Team {
     private int goal_diff;
     private int points;
 
-    public Team() {
+    public Team(String name) {
+        this.name = name;
     }
 
 

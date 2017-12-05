@@ -28,12 +28,12 @@ public class testMatch {
         String name1 = "Arsenal";
         String name2 = "Liverpool";
         String date = "10/10/2017";
-        
 
-        //manageleague.Team team1 = new Team(name2);
-        //manageleague.Team team2 = new Team(name1);
 
-        manageleague.Match match = new manageleague.Match(name1, name2, date);
+        manageleague.Team team1 = new Team(name2);
+        manageleague.Team team2 = new Team(name1);
+
+        manageleague.Match match = new manageleague.Match(team1, team2, date);
         match.SetScores(1,0);
 
         assertThat("name team 1", match.getHome_team().getName(), is(name1));

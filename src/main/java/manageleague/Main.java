@@ -10,7 +10,10 @@ public class Main {
 		test.addTeams("Holland");
 		test.addTeams("France");
 		test.addTeams("Germany");
+		
+		test.addMatch("Belgium", "France", "01/01/2001");
 		System.out.println(test.getNbr_teams());
+
 	}
 
 }

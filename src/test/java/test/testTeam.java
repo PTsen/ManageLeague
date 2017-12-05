@@ -19,7 +19,7 @@ public class testTeam {
         String name = "Real Madrid FC";
         manageleague.Team team = new Team(name);
 
-        assertThat("Couldn't create tea",team.getName(), is(name));
+        assertThat("Couldn't create team",team.getName(), is(name));
     }
 
     /**

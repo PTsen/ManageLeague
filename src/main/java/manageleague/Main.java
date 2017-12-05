@@ -12,8 +12,6 @@ public class Main {
 		test.addTeams("Germany");
 		
 		test.addMatch("Belgium", "France", "01/01/2001");
-		
-		test.updateDB();
 	}
 
 }

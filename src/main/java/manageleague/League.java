@@ -42,6 +42,12 @@ public class League implements Serializable {
     }
     
     //Setters
+    public void init(String name, String start, String end) {
+    	this.setName(name);
+    	this.setStart(start);
+    	this.setEnd(end);
+    }
+    
     public void setName(String name) {
     	this.name = name;
     }
@@ -91,8 +97,22 @@ public class League implements Serializable {
     }
 
     public void addMatch(String home_team, String away_team, String date){
-
-        //list_of_matches.add(match);
+    	Team h_team = getTeam(home_team);
+    	Team a_team = getTeam(away_team);
+    	
+    	Date match_date = convertToDate(date);
+    	Match match = new Match(h_team, a_team, match_date);
+    	list_of_matches.add(match);
+    }
+    
+    public Team getTeam(String team) {
+    	for (Team team_item : list_of_teams) {
+    		if (team_item.getName() == team) {
+    			return team_item;
+    		}
+    	}
+    	
+    	throw new java.lang.Error("No existing team");
     }
     
     public void updateDB() {
@@ -124,24 +144,25 @@ public class League implements Serializable {
 
     private void tryParse(String dateString, String datetime)
     {
-        List<String> formatStrings = Arrays.asList("dd/MM/yyyy","dd/MM/yy", "d/M/yyyy", "d/M/yy");
-        for (String formatString : formatStrings)
-        {
-            if(datetime == "start") {
-                try {
-                    //return new SimpleDateFormat(formatString).parse(dateString);
-                    start_date = new SimpleDateFormat(formatString).parse(dateString);
-                } catch (ParseException e) {
-                    e.getMessage();
-                }
-            }
-            if(datetime == "end") {
-                try {
-                    end_date = new SimpleDateFormat(formatString).parse(dateString);
-                } catch (ParseException e) {
-                    e.getMessage();
-                }
-            }
+    	if(datetime == "start") {
+    		start_date = convertToDate(dateString);
+    	}
+    	if(datetime == "end") {
+    		end_date =   convertToDate(dateString);
+    	}
+    }
+    
+    private Date convertToDate(String date) {
+    	Date converted_date = new Date();
+    	List<String> formatStrings = Arrays.asList("dd/MM/yyyy","dd/MM/yy", "d/M/yyyy", "d/M/yy");
+        for (String formatString : formatStrings) {
+        	try {
+        		converted_date = new SimpleDateFormat(formatString).parse(date);
+        	} catch (ParseException e) {
+        		e.getMessage();
+        	}
         }
+        
+        return converted_date;
     }
 }

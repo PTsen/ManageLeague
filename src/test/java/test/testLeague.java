@@ -35,7 +35,7 @@ public class testLeague {
         english_league.setStart(start);
         english_league.setEnd(end);
 
-        assertTrue("No name for League", english_league.getName() == league_name);
+        assertThat("No name for League", english_league.getName(), is(league_name));
         assertThat("No start date for league",df.format(english_league.getStart_date()), is(start));
         assertThat("No end date for league",df.format(english_league.getEnd_date()), is(end));
 
@@ -74,6 +74,8 @@ public class testLeague {
         assertTrue("No name for League", english_league.getName() == league_name);
         assertThat("No start date for league",df.format(english_league.getStart_date()), is(start));
         assertThat("No end date for league",df.format(english_league.getEnd_date()), is(end));
+
+        english_league.reset();  //reset singleton object[League] to base values
 
     }
 
@@ -124,6 +126,8 @@ public class testLeague {
         assertThat("No start date for league",df.format(la_liga.getStart_date()), is(nullValue()));
         assertThat("No end date for league",df.format(la_liga.getEnd_date()), is(nullValue()));
 
+        la_liga.reset();
+
     }
 
     /**
@@ -150,6 +154,8 @@ public class testLeague {
         assertThat("No team was added", english_league.getList_of_teams().size(), is(RESULT));
         assertThat("team1 was not added to list",english_league.getList_of_teams().get(0).getName(), is(team_name1));
         assertThat("team2 was not added to list",english_league.getList_of_teams().get(1).getName(), is(team_name2));
+
+        english_league.reset();
 
     }
 
@@ -179,5 +185,7 @@ public class testLeague {
 
         assertTrue("No match was added", english_league.getList_of_teams().size() == result);
         assertThat("Date was not set",df.format(english_league.getList_of_matches().get(0).getMatch_date()), is(date));
+
+        english_league.reset();
     }
 }

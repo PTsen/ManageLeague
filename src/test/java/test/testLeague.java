@@ -135,7 +135,6 @@ public class testLeague {
      */
     @Test
     public void testAddTeams() {
-
         int RESULT = 2;
         String league_name = "English Premier League";
         String team_name1 = "Arsenal";
@@ -144,6 +143,7 @@ public class testLeague {
         String end = "26/5/2018";
 
         manageleague.League english_league = manageleague.League.getInstance();
+        english_league.reset();
         english_league.setName(league_name);
         english_league.setStart(start);
         english_league.setEnd(end);
@@ -176,6 +176,7 @@ public class testLeague {
 
 
         manageleague.League english_league = manageleague.League.getInstance();
+        english_league.reset();
         english_league.setName(league_name);
         english_league.setStart(start);
         english_league.setEnd(end);

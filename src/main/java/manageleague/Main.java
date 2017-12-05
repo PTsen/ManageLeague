@@ -10,6 +10,7 @@ public class Main {
 		test.addTeams("Holland");
 		test.addTeams("France");
 		test.addTeams("Germany");
+		System.out.println(test.getNbr_teams());
 	}
 
 }

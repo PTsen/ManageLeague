@@ -1,5 +1,7 @@
 package manageleague;
 
+import java.util.Date;
+
 public class Main {
 
 	public static void main(String[] args) {
@@ -13,6 +15,9 @@ public class Main {
 		
 		test.addMatch("Belgium", "France", "01/01/2001");
 		System.out.println(test.getNbr_teams());
+		
+		Date tst = test.convertToDate("01/01/2001");
+		System.out.println(tst);
 	}
 
 }

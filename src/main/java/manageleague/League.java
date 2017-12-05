@@ -152,16 +152,16 @@ public class League implements Serializable {
     	}
     }
     
-    private Date convertToDate(String date) {
+    public Date convertToDate(String date) {
     	Date converted_date = null;
     	Boolean initialized = false;
     	List<String> formatStrings = Arrays.asList("dd/MM/yyyy","dd/MM/yy", "d/M/yyyy", "d/M/yy");
         for (String formatString : formatStrings) {
         	try {
+        		initialized = true;
         		converted_date = new SimpleDateFormat(formatString).parse(date);
         	} catch (ParseException e) {
         		e.getMessage();
-        		initialized = true;
         	}
         }
         

@@ -25,15 +25,33 @@ public class League implements Serializable {
     private Date end_date;
     private List<Team> list_of_teams;
     private List<Match> list_of_matches;
+    
+    //creation of the singleton
+    private static League instance = new League();
 
-    //Constructor method
-    public League(String name, String start, String end) {
-        this.name = name;
-        tryParse(start, "start");
-        tryParse(end, "end");
+    //Constructor method (Private)
+    private League() {
         list_of_teams = new ArrayList<Team>();
         list_of_matches = new ArrayList<Match>();
 
+    }
+    
+    //Singleton access
+    public static League getInstance() {
+    	return instance;
+    }
+    
+    //Setters
+    public void setName(String name) {
+    	this.name = name;
+    }
+    
+    public void setStart(String start) {
+    	tryParse(start, "start");
+    }
+    
+    public void setEnd(String end) {
+    	tryParse(end, "end");
     }
 
     //Accessors

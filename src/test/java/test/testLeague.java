@@ -132,7 +132,7 @@ public class testLeague {
     @Test
     public void testAddTeams() {
 
-        int result = 2;
+        int RESULT = 2;
         String league_name = "English Premier League";
         String team_name1 = "Arsenal";
         String team_name2 = "Manchester United";
@@ -147,7 +147,7 @@ public class testLeague {
         english_league.addTeams(team_name1);
         english_league.addTeams(team_name2);
 
-        assertTrue("No team was added", english_league.getList_of_teams().size() == result);
+        assertThat("No team was added", english_league.getList_of_teams().size(), is(RESULT));
         assertThat("team1 was not added to list",english_league.getList_of_teams().get(0).getName(), is(team_name1));
         assertThat("team2 was not added to list",english_league.getList_of_teams().get(1).getName(), is(team_name2));
 

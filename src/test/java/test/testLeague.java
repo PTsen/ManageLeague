@@ -7,6 +7,7 @@ import static org.hamcrest.CoreMatchers.*;
 //import static org.hamcrest.collection.IsIterableContainingInOrder.contains;
 import static org.hamcrest.MatcherAssert.assertThat;
 
+import manageleague.League;
 import org.junit.Test;
 
 import java.text.DateFormat;
@@ -18,7 +19,7 @@ public class testLeague {
     }
 
     /**
-     * Test Constructor method for {@link manageleague.League#League(String, String, String)}.
+     * Test Constructor method for {@link League#League()}.
      */
     @Test
     public void testLeagueConstruct() {

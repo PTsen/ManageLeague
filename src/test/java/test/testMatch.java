@@ -18,7 +18,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 public class testMatch {
 
-    @Test
+    /*@Test
     void testMatchConstruct() {
 
         DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
@@ -45,7 +45,7 @@ public class testMatch {
 
     @Test
     void testSetScores() {
-    }
+    }*/
 }
 
 

@@ -17,18 +17,17 @@ public class Team implements Serializable {
     //Contsructor
     public Team(String name) {
     	this.name = name;
-    	
-
+    	drawn = 0;
+    	lost =0;
+    	win = 0;
+    	played = 0;
+    	goal_diff = 0;
+    	points = 0;
     }
     
     //Private fields
     public String getName() {
 		return name;
-	}
-	
-	
-	public void setName(String name) {
-		this.name = name;
 	}
 
 	public int getPosition() {

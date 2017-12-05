@@ -13,6 +13,7 @@ public class Main {
 		
 		test.addMatch("Belgium", "France", "01/01/2001");
 		System.out.println(test.getNbr_teams());
+
 	}
 
 }

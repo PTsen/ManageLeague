@@ -19,7 +19,7 @@ import static org.junit.Assert.*;
 public class testMatch {
 
     @Test
-    void testSetScores() {
+    void testMatchConstruct() {
 
         DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
         DateFormat df1 = new SimpleDateFormat("dd/MM/yy");
@@ -28,6 +28,7 @@ public class testMatch {
         String name1 = "Arsenal";
         String name2 = "Liverpool";
         String date = "10/10/2017";
+        
 
         //manageleague.Team team1 = new Team(name2);
         //manageleague.Team team2 = new Team(name1);
@@ -40,5 +41,13 @@ public class testMatch {
         assertThat("Date match", df.format(match.getMatch_date()), is(date));
 
         }
+
+    @Test
+    void testSetScores(){
+
     }
+
+
+
 }
+

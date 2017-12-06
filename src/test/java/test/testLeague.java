@@ -9,9 +9,11 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 import manageleague.League;
 import org.junit.Test;
+import sun.util.calendar.BaseCalendar;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class testLeague {
 
@@ -35,7 +37,7 @@ public class testLeague {
         english_league.setStart(start);
         english_league.setEnd(end);
 
-        assertTrue("No name for League", english_league.getName() == league_name);
+        assertThat("No name for League", english_league.getName(), is(league_name));
         assertThat("No start date for league",df.format(english_league.getStart_date()), is(start));
         assertThat("No end date for league",df.format(english_league.getEnd_date()), is(end));
 
@@ -75,11 +77,13 @@ public class testLeague {
         assertThat("No start date for league",df.format(english_league.getStart_date()), is(start));
         assertThat("No end date for league",df.format(english_league.getEnd_date()), is(end));
 
+        english_league.reset();  //reset singleton object[League] to base values
+
     }
 
     /**
-     * Test method for {@link manageleague.League#tryParse(String, String)}.
-     * Test for when setting date with wrong format. Class throws parse
+     * Test method for {@link manageleague.League#tryParse(String, String) and convertToDate(String, String)}.
+     * Test for when setting date with wrong format. Class throws null argument
      * exception.
      */
     @Test (expected = NullPointerException.class)
@@ -97,9 +101,9 @@ public class testLeague {
         la_liga.setEnd(end1);
 
 
-        assertTrue("League name not set", la_liga.getName() == league_name);
-        assertThat("No start date for league",df.format(la_liga.getStart_date()), is(nullValue()));
-        assertThat("No end date for league",df.format(la_liga.getEnd_date()), is(nullValue()));
+        assertTrue("League name set", la_liga.getName() == league_name);
+        assertThat("start date for league",df.format(la_liga.getStart_date()), is(nullValue()));
+        assertThat("end date for league",df.format(la_liga.getEnd_date()), is(nullValue()));
 
         //Case 2
         String start2 = "2017/08/26";
@@ -109,9 +113,9 @@ public class testLeague {
         la_liga.setEnd(end2);
 
 
-        assertTrue("No name for League", la_liga.getName() == league_name);
-        assertThat("No start date for league",df.format(la_liga.getStart_date()), is(nullValue()));
-        assertThat("No end date for league",df.format(la_liga.getEnd_date()), is(nullValue()));
+        assertTrue("name for League", la_liga.getName() == league_name);
+        assertThat("start date for league",df.format(la_liga.getStart_date()), is(nullValue()));
+        assertThat("end date for league",df.format(la_liga.getEnd_date()), is(nullValue()));
 
         //Case 3
         String start3 = "08/26/2017";
@@ -120,10 +124,58 @@ public class testLeague {
         la_liga.setStart(start3);
         la_liga.setEnd(end3);
 
-        assertTrue("No name for League", la_liga.getName() == league_name);
-        assertThat("No start date for league",df.format(la_liga.getStart_date()), is(nullValue()));
-        assertThat("No end date for league",df.format(la_liga.getEnd_date()), is(nullValue()));
+        assertTrue("name for League", la_liga.getName() == league_name);
+        assertThat("start date for league",df.format(la_liga.getStart_date()), is(nullValue()));
+        assertThat("end date for league",df.format(la_liga.getEnd_date()), is(nullValue()));
 
+    }
+
+    /**
+     * Test method for {@link manageleague.League#getTeam(String)}.
+     * Test that exception is thrown when a is not found/doesn't exist.
+     */
+    @Test (expected = java.lang.Error.class)
+    public final void testGetTeam() {
+
+        String league_name = "English Premier League";
+        String team_name1 = "Arsenal";
+        String team_name2 = "Manchester United";
+        String not_team = "Baghdad";
+        String start = "26/8/2017";
+        String end = "26/5/2018";
+
+        manageleague.League english_league = manageleague.League.getInstance();
+        english_league.reset();
+        english_league.setName(league_name);
+        english_league.setStart(start);
+        english_league.setEnd(end);
+        english_league.addTeams(team_name1);
+        english_league.addTeams(team_name2);
+
+        assertThat("Non-exisiting team",english_league.getTeam(not_team).getName(), is(not_team));
+
+    }
+
+    /**
+     * Test method for {@link League#reset()}.
+     */
+    @Test
+    public void testReset() {
+
+        int result = 0;
+        String str_result1 = "";
+        String str_result2 = "6/12/2017"; //dates are rest to today's date
+        DateFormat df = new SimpleDateFormat("d/M/yyyy");
+
+        manageleague.League english_league = manageleague.League.getInstance();
+        english_league.reset();
+
+        assertTrue("list of matches not reset", english_league.getList_of_matches().size() == result);
+        assertTrue("list of teams not reset", english_league.getList_of_teams().size() == result);
+        assertThat("Date was not reset",df.format(english_league.getEnd_date()), is(str_result2));
+        assertThat("Date was not reset",df.format(english_league.getEnd_date()), is(str_result2));
+        assertThat("Number of teams not reset",english_league.getNbr_teams(), is(result));
+        assertThat("name not reset",english_league.getName(), is(str_result1));
     }
 
     /**
@@ -161,7 +213,7 @@ public class testLeague {
 
         int result = 1;
         String league_name = "English Premier League";
-        DateFormat df = new SimpleDateFormat("dd/mm/yyyy");
+        DateFormat df = new SimpleDateFormat("d/M/yyyy");
         String start = "26/08/2017";
         String end = "26/05/2018";
         String home_team = "Arsenal";
@@ -178,7 +230,11 @@ public class testLeague {
         english_league.addTeams(away_team);
         english_league.addMatch(home_team, away_team, date);
 
-        assertTrue("No match was added", english_league.getList_of_teams().size() == result);
+        assertTrue("No match was added", english_league.getList_of_matches().size() == result);
         assertThat("Date was not set",df.format(english_league.getList_of_matches().get(0).getMatch_date()), is(date));
+        assertThat("Home team not defined",english_league.getList_of_matches().get(0).getHome_team().getName(), is(home_team));
+        assertThat("Away team not defined",english_league.getList_of_matches().get(0).getAway_team().getName(), is(away_team));
     }
+
+    //@testUpdateDB
 }

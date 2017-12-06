@@ -77,11 +77,10 @@ public class testMatch {
 
         //Case 4
         //int score_home = 3;
-        //int score_away = 0;
-
-        //@testDeterminePoints
+        //int score_away = 0
 
     }
+    //@testDeterminePoints
 
 }
 

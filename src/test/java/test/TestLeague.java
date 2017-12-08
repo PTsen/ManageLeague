@@ -159,24 +159,6 @@ public class TestLeague {
     /**
      * Test method for {@link League#reset()}.
      */
-    @Test
-    public void testReset() {
-
-        int result = 0;
-        String str_result1 = "";
-        String str_result2 = "6/12/2017"; //dates are rest to today's date
-        DateFormat df = new SimpleDateFormat("d/M/yyyy");
-
-        manageleague.League english_league = manageleague.League.getInstance();
-        english_league.reset();
-
-        assertTrue("list of matches not reset", english_league.getList_of_matches().size() == result);
-        assertTrue("list of teams not reset", english_league.getList_of_teams().size() == result);
-        assertThat("Date was not reset",df.format(english_league.getEnd_date()), is(str_result2));
-        assertThat("Date was not reset",df.format(english_league.getEnd_date()), is(str_result2));
-        assertThat("Number of teams not reset",english_league.getNbr_teams(), is(result));
-        assertThat("name not reset",english_league.getName(), is(str_result1));
-    }
 
     /**
      * Test method for {@link manageleague.League#addTeams(String)}.

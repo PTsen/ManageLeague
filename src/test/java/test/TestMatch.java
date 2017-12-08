@@ -16,12 +16,12 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import static org.junit.Assert.*;
-public class testMatch {
+public class TestMatch {
 
     @Test
     public void testMatchConstruct() {
 
-        DateFormat df = new SimpleDateFormat("dd/MM/yyyy"); //Other date formats have been tested @testLeague
+        DateFormat df = new SimpleDateFormat("dd/MM/yyyy"); //Other date formats have been tested @TestLeague
         String name1 = "Arsenal";
         String name2 = "Liverpool";
         String date = "10/10/2017";

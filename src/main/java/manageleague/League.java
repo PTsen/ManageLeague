@@ -20,7 +20,8 @@ public class League implements Serializable {
 
     //Private fields
     private String name;
-    private int nbr_teams;
+
+
     private Date start_date;   //League season
     private Date end_date;
     private List<Team> list_of_teams;
@@ -66,7 +67,11 @@ public class League implements Serializable {
     }
 
     public int getNbr_teams() {
-        return nbr_teams;
+        return this.list_of_teams.size();
+    }
+
+    public int getNbr_matchs() {
+        return this.list_of_matches.size();
     }
 
     public Date getStart_date() {
@@ -174,7 +179,6 @@ public class League implements Serializable {
     
     public void reset() {
     	name = "";
-        nbr_teams= 0;
         start_date = new Date();   //League season
         end_date = new Date();
         list_of_teams.clear();

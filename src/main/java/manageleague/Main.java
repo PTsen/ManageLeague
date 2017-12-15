@@ -1,5 +1,7 @@
 package manageleague;
 
+import database.DatabaseManagment;
+
 import java.util.Date;
 
 public class Main {
@@ -14,10 +16,11 @@ public class Main {
 		test.addTeams("Germany");
 		
 		test.addMatch("Belgium", "France", "01/01/2001");
-		System.out.println(test.getNbr_teams());
 
 		Date tst = test.convertToDate("01/01/2001");
-		System.out.println(tst);
+		System.out.println(test.getList_of_teams().get(1).getName());
+		DatabaseManagment db = DatabaseManagment.getInstance();
+		db.putData(test);
 	}
 
 }

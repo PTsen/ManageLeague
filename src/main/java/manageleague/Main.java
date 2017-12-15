@@ -18,8 +18,6 @@ public class Main {
 
 		Date tst = test.convertToDate("01/01/2001");
 		System.out.println(tst);
-		DisplayScore ds = new DisplayScore();
-		//ds.ScanScore();  a completer quand les matchs sont crée.
 	}
 
 }

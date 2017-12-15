@@ -1,13 +1,11 @@
 package test;
 
-import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
 //import static org.hamcrest.collection.IsCollectionWithSize.hasSize;
 //import static org.hamcrest.collection.IsIterableContainingInAnyOrder.containsInAnyOrder;
 //import static org.hamcrest.collection.IsIterableContainingInOrder.contains;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-import manageleague.League;
 import manageleague.Team;
 import org.junit.Test;
 
@@ -15,7 +13,6 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import static org.junit.Assert.*;
 public class TestMatch {
 
     @Test
@@ -62,7 +59,7 @@ public class TestMatch {
         manageleague.Team team2 = new Team(name2);
 
         manageleague.Match match = new manageleague.Match(team1, team2, dateobject);
-        match.SetScores(score_home, score_away);
+        match.setScores(score_home, score_away);
 
         assertThat("Home score not set", match.getScore_t1(), is(score_home));
         assertThat("Away score not set", match.getScore_t2(), is(score_away));

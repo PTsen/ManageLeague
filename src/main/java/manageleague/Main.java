@@ -19,7 +19,7 @@ public class Main {
 		Date tst = test.convertToDate("01/01/2001");
 		System.out.println(tst);
 		DisplayScore ds = new DisplayScore();
-		//Appel le match test pour modifier son score.
+		//Appel le match test pour modifier son score .
 		ds.ScanScore(League.getInstance().getList_of_matches().get(0));
 
 	}

@@ -60,7 +60,7 @@ public class Match implements Serializable{
     	}
     }
 
-    public void SetScores(int score_t1, int score_t2) {
+    public void setScores(int score_t1, int score_t2) {
         this.score_t1 = score_t1;
         this.score_t2 = score_t2;
         DeterminePoints(); //Might be better to leave this out of the function

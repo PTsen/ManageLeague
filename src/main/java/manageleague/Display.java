@@ -63,51 +63,15 @@ public class Display {
 
         System.out.println("Les équipes ont bien été enregitrées ! ");
     }
- /*
-    public Match generateMatch(String[] teams, int nb_teams){
-        int random_for_team1 = 0;
-        int random_for_team2 = 0;
-        int[] selected_team = new int[nb_teams];
 
-        for(int i=1; i<=nb_teams; i++){
-            selected_team[i] = 0;
+    public static void displayMatchGeneration(Match[] match){
+        System.out.println("Les équipes sont générés. Voici la liste :");
+        System.out.println("------------------------------------------------------------------------");
+        System.out.printf( "|         HOME          |         AWAY          |         DATE         |");
+        System.out.println("------------------------------------------------------------------------");
+        for(int i=0; i<match.length;i++){
+            System.out.println( match[i].getHome_team()+"     "+match[i].getAway_team()+"     "+match[i].getMatch_date());
         }
-
-        for(int i=1; i<=nb_teams; i++) {
-            random_for_team1 = NB_TEAMS_MIN + (int) (Math.random() * ((nb_teams - NB_TEAMS_MIN) + 1));
-            random_for_team2 = NB_TEAMS_MIN + (int) (Math.random() * ((nb_teams - NB_TEAMS_MIN) + 1));
-
-            boolean notOK = true;
-            while(notOK) {
-                //random_for_team2 == random_for_team1) &&
-                if((isFill(selected_team, random_for_team1)) && (isFill(selected_team, random_for_team2))) {
-                    random_for_team1 = NB_TEAMS_MIN + (int) (Math.random() * ((nb_teams - NB_TEAMS_MIN) + 1));
-                    random_for_team2 = NB_TEAMS_MIN + (int) (Math.random() * ((nb_teams - NB_TEAMS_MIN) + 1));
-                }else{
-                    selected_team[random_for_team1] = 1;
-                    selected_team[random_for_team2] = 1;
-
-                    Team t1 = new Team(teams[random_for_team1]);
-                    Team t2 = new Team(teams[random_for_team2]);
-                    Match match = new Match(t1,t2,);
-                }
-            }
-
-
-
-
-        }
-
-
 
     }
-
-    public boolean isFill(int[] selected_teams, int random){
-        if(selected_teams[random] != 0){
-            return true;
-        }else{
-            return false;
-        }
-    }
-    */
 }
